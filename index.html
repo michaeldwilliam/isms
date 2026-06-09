@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO/IEC 27001 Portfolio — Michael William</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz@1,6..72&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8923A;
+    --gold-bright: #C9A84C;
+    --gold-soft: #F0E7CE;
+    --ink: #16150F;
+    --ink2: #3A382E;
+    --muted: #767264;
+    --rule: #E6E2D6;
+    --bg: #F7F5EE;
+    --surface: #FFFFFF;
+    --cream: #EFEBDD;
+    --shadow: 0 1px 2px rgba(22,21,15,.04), 0 8px 28px -12px rgba(22,21,15,.12);
+    --shadow-lift: 0 2px 4px rgba(22,21,15,.05), 0 20px 50px -16px rgba(22,21,15,.22);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184,146,58,.06), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(184,146,58,.04), transparent 55%);
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 36px; }
+
+  /* ─────────── HEADER ─────────── */
+  .header { padding: 88px 0 0; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: rise .6s .05s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+
+  .headline {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 6.2vw, 72px);
+    line-height: .98;
+    letter-spacing: -.035em;
+    color: var(--ink);
+    max-width: 16ch;
+    margin-bottom: 26px;
+    opacity: 0;
+    animation: rise .7s .15s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .headline .accent {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: -.01em;
+  }
+
+  .sub {
+    font-size: 17px;
+    color: var(--ink2);
+    line-height: 1.6;
+    max-width: 52ch;
+    opacity: 0;
+    animation: rise .7s .25s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 34px;
+    opacity: 0;
+    animation: rise .7s .35s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .03em;
+    color: var(--ink2);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 7px 13px;
+    border-radius: 100px;
+  }
+
+  /* ─────────── DISCLAIMER ─────────── */
+  .disclaimer {
+    margin-top: 44px;
+    padding: 16px 22px;
+    background: linear-gradient(180deg, #FBF4DF, #F8EFD3);
+    border: 1px solid #E8D49A;
+    border-radius: 12px;
+    font-size: 12.5px;
+    color: #7A6320;
+    line-height: 1.6;
+    opacity: 0;
+    animation: rise .7s .45s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .disclaimer strong { color: #5E4D14; font-weight: 600; }
+
+  /* ─────────── DELIVERABLES ─────────── */
+  .section { padding: 72px 0 0; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 20px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: rise .6s .55s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .section-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -.02em;
+  }
+  .section-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--muted);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 26px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s, border-color .28s;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    animation: rise .6s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: var(--gold-soft);
+  }
+
+  .card--featured {
+    grid-column: span 3;
+    grid-row: span 2;
+    background: linear-gradient(155deg, #FFFFFF 0%, #FBF7EC 100%);
+    padding: 30px 30px 28px;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .card--featured .card-title { font-size: 30px; }
+  .card--featured .card-desc { font-size: 14px; flex: 0 1 auto; }
+  .featured-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .featured-body { display: flex; flex-direction: column; gap: 14px; }
+  .featured-num {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 86px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: .15;
+    margin: 4px 0 16px;
+    user-select: none;
+  }
+
+  .card--std { grid-column: span 3; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .card-ref {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .card-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+  .card-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .card-desc strong { color: var(--ink2); font-weight: 600; }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: .01em;
+    margin-top: 2px;
+  }
+  .card-cta svg { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+  .card:hover .card-cta svg { transform: translateX(4px); }
+
+  .featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-soft);
+    padding: 6px 12px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* ─────────── ABOUT ─────────── */
+  .about {
+    padding: 80px 0 0;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 56px;
+  }
+  .about-block-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+  }
+  .about-body { font-size: 14.5px; color: var(--ink2); line-height: 1.72; }
+  .about-body + .about-body { margin-top: 13px; }
+
+  .creds {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .cred {
+    background: var(--surface);
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cred-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .cred-text { font-size: 13px; color: var(--ink2); line-height: 1.4; }
+  .cred-text b { color: var(--ink); font-weight: 600; display: block; font-size: 13.5px; }
+
+  .contact-card {
+    margin-top: 18px;
+    padding: 22px;
+    border-radius: 14px;
+    background: linear-gradient(150deg, var(--ink) 0%, #26241A 100%);
+    color: #F7F5EE;
+  }
+  .contact-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 12px;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #F7F5EE;
+    text-decoration: none;
+    transition: gap .2s;
+  }
+  .contact-link:hover { gap: 14px; }
+  .contact-link .arrow {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ─────────── FOOTER ─────────── */
+  .footer {
+    margin-top: 80px;
+    border-top: 1px solid var(--rule);
+    padding: 26px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: .03em;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: .55s; }
+  .card:nth-child(2) { animation-delay: .63s; }
+  .card:nth-child(3) { animation-delay: .71s; }
+  .card:nth-child(4) { animation-delay: .79s; }
+  .card:nth-child(5) { animation-delay: .87s; }
+
+  @media (max-width: 860px) {
+    .cards { grid-template-columns: 1fr; }
+    .card--featured, .card--std { grid-column: 1 / -1; grid-row: auto; }
+    .card--featured { padding: 28px 26px; }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 22px; }
+    .header { padding-top: 56px; }
+    .headline { font-size: 40px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <span class="eyebrow">ISO/IEC 27001:2022 · GRC Consulting Portfolio</span>
+    <h1 class="headline">A full ISMS engagement, <span class="accent">documented.</span></h1>
+    <p class="sub">Five ISO/IEC 27001:2022 deliverables produced for a fictional UK fintech engagement, demonstrating end-to-end consulting method from gap analysis through to certification readiness.</p>
+    <div class="meta-row">
+      <span class="pill">Fictional client</span>
+      <span class="pill">UK Fintech · FCA-regulated</span>
+      <span class="pill">ISO/IEC 27001:2022</span>
+      <span class="pill">Pre-Stage 2 engagement</span>
+    </div>
+    <div class="disclaimer">
+      <strong>Illustrative sample.</strong> Monarch Consolidated Ltd is a fictional organisation. These documents were produced as portfolio work samples to demonstrate ISO/IEC 27001:2022 consulting method and deliverable quality. They do not describe a real client engagement and contain no confidential information.
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Engagement deliverables</h2>
+      <span class="section-note">Monarch Consolidated Ltd · 5 documents</span>
+    </div>
+
+    <div class="cards">
+
+      <a class="card card--featured" href="MCL-GA-2026-001.html">
+        <div class="featured-head">
+          <span class="featured-badge">Starting point</span>
+          <span class="card-date">2026-05-18</span>
+        </div>
+        <div class="featured-num">01</div>
+        <div class="featured-body">
+          <span class="card-ref">MCL-GA-2026-001</span>
+          <h3 class="card-title">Gap Analysis Report</h3>
+          <p class="card-desc">Assessment of 29 requirements (7 management clauses and 22 Annex A controls) against ISO/IEC 27001:2022. Three <strong>P1 certification blockers</strong> identified, with a prioritised four-phase remediation roadmap.</p>
+          <span class="card-cta">Open document
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a class="card card--std" href="MCL-RR-2026-001.html">
+        <div class="card-top">
+          <span class="card-ref">MCL-RR-2026-001</span>
+          <span class="card-date">2026-05-25</span>
+        </div>
+        <h3 class="card-title">Risk Register</h3>
+        <p class="card-desc">Eight information security risks assessed on a 5×5 qualitative matrix (Cl. 6.1.2 / 6.1.3), with inherent and residual scores, treatment decisions, and ownership per risk.</p>
+        <span class="card-cta">Open document
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a class="card card--std" href="MCL-SOA-2026-001.html">
+        <div class="card-top">
+          <span class="card-ref">MCL-SOA-2026-001</span>
+          <span class="card-date">2026-05-29</span>
+        </div>
+        <h3 class="card-title">Statement of Applicability</h3>
+        <p class="card-desc">All 93 Annex A controls documented with applicability decisions, justifications, implementation status, and evidence references. The mandatory Cl. 6.1.3 output.</p>
+        <span class="card-cta">Open document
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a class="card card--std" href="MCL-RTP-2026-001.html">
+        <div class="card-top">
+          <span class="card-ref">MCL-RTP-2026-001</span>
+          <span class="card-date">2026-06-01</span>
+        </div>
+        <h3 class="card-title">Risk Treatment Plan</h3>
+        <p class="card-desc">Treatment actions for all eight risks with linked controls, accountable owners, target dates, and evidence references, tracking from register to closure (Cl. 6.1.3(e) / 8.3).</p>
+        <span class="card-cta">Open document
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a class="card card--std" href="MCL-ISMS-RPT-2026-001.html">
+        <div class="card-top">
+          <span class="card-ref">MCL-ISMS-RPT-2026-001</span>
+          <span class="card-date">2026-06-06</span>
+        </div>
+        <h3 class="card-title">ISMS Engagement Report</h3>
+        <p class="card-desc">Consolidated client-facing report: executive summary, scope and methodology, key findings and risk posture, four-phase remediation roadmap, and a Stage 2 certification-readiness assessment with assessor declaration.</p>
+        <span class="card-cta">Open document
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+
+
+    </div>
+  </section>
+
+  <section class="about">
+    <div>
+      <h2 class="about-block-title">About this engagement</h2>
+      <p class="about-body">Monarch Consolidated Ltd is a fictional FCA-regulated payments provider used as the basis for this portfolio engagement. The scenario places the organisation at pre-Stage 2 certification: a mature ISMS with three P1 blockers requiring remediation before audit.</p>
+      <p class="about-body">The five deliverables were produced using the same workflow and toolkit applied to real engagements, demonstrating end-to-end method rather than isolated outputs. Findings thread coherently from gap analysis through risk treatment to the final engagement report.</p>
+    </div>
+    <div>
+      <h2 class="about-block-title">Assessor</h2>
+      <div class="creds">
+        <div class="cred">
+          <span class="cred-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1l1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9L3.9 12.2l.7-4L1.7 5.3l4-.6L7.5 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
+          <span class="cred-text"><b>ISO/IEC 27001 Provisional Implementer</b>PECB Credential ID 1529522-2026-05 · May 2026</span>
+        </div>
+        <div class="cred">
+          <span class="cred-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5L7.5 2.5 13 5.5 7.5 8.5 2 5.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4.5 6.8v2.7c0 .6 1.3 1.5 3 1.5s3-.9 3-1.5V6.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+          <span class="cred-text"><b>Google Cybersecurity Professional</b>Certificate · April 2026</span>
+        </div>
+        <div class="cred">
+          <span class="cred-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1.5C5 1.5 3 3.5 3 6c0 3.2 4.5 7.5 4.5 7.5S12 9.2 12 6c0-2.5-2-4.5-4.5-4.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7.5" cy="6" r="1.6" stroke="currentColor" stroke-width="1.2"/></svg></span>
+          <span class="cred-text"><b>Freelance GRC Consultant</b>Kota Kinabalu, Malaysia · UK / EU / US clients</span>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">Available for engagements</div>
+        <a class="contact-link" href="https://www.upwork.com" target="_blank" rel="noopener">
+          View Upwork profile
+          <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 10L10 3M5 3h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>ISO/IEC 27001 Portfolio · Michael William · 2026</span>
+    <span>Illustrative sample · fictional client</span>
+  </footer>
+
+</div>
+</body>
+</html>
