@@ -5,17 +5,17 @@
 <script>(function(){try{var v=JSON.parse(localStorage.getItem('mw-pt')||'{}');document.documentElement.setAttribute('data-palette',v.palette==='cognac'?'cognac':'vitality');document.documentElement.setAttribute('data-mode',v.mode==='dark'?'dark':'light');}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ISO/IEC 27001 Gap Assessment & Certification-Readiness | Michael William</title>
-<meta name="description" content="ISO/IEC 27001:2022 gap assessment and certification-readiness portfolio by Michael William, PECB ISO/IEC 27001 Provisional Implementer. Five worked deliverables for a fictional UK fintech: gap analysis, risk register, Statement of Applicability, risk treatment plan, and engagement report.">
+<meta name="description" content="ISO/IEC 27001:2022 gap assessment and certification-readiness portfolio by Michael William, PECB ISO/IEC 27001 Provisional Implementer. A worked ISO 27001 engagement for a fictional UK fintech: gap analysis, risk register, Statement of Applicability, risk treatment plan, scope, asset inventory, objectives, internal audit, corrective actions, management review, and engagement report.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ISO/IEC 27001 Gap Assessment &amp; Certification-Readiness | Michael William">
-<meta property="og:description" content="ISO/IEC 27001:2022 gap assessment and certification-readiness portfolio by Michael William, PECB ISO/IEC 27001 Provisional Implementer. Five worked deliverables for a fictional UK fintech: gap analysis, risk register, Statement of Applicability, risk treatment plan, and engagement report.">
+<meta property="og:description" content="ISO/IEC 27001:2022 gap assessment and certification-readiness portfolio by Michael William, PECB ISO/IEC 27001 Provisional Implementer. A worked ISO 27001 engagement for a fictional UK fintech: gap analysis, risk register, Statement of Applicability, risk treatment plan, scope, asset inventory, objectives, internal audit, corrective actions, management review, and engagement report.">
 <meta property="og:site_name" content="Michael William · GRC Consulting">
 <!-- TODO once live: add absolute URLs -->
 <!-- <meta property="og:url" content="https://YOUR-GITHUB-PAGES-URL/"> -->
 <!-- <meta property="og:image" content="https://YOUR-GITHUB-PAGES-URL/og-image.png"> (1200x630px) -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ISO/IEC 27001 Gap Assessment &amp; Certification-Readiness | Michael William">
-<meta name="twitter:description" content="ISO/IEC 27001:2022 gap assessment and certification-readiness portfolio by Michael William, PECB ISO/IEC 27001 Provisional Implementer. Five worked deliverables for a fictional UK fintech: gap analysis, risk register, Statement of Applicability, risk treatment plan, and engagement report.">
+<meta name="twitter:description" content="ISO/IEC 27001:2022 gap assessment and certification-readiness portfolio by Michael William, PECB ISO/IEC 27001 Provisional Implementer. A worked ISO 27001 engagement for a fictional UK fintech: gap analysis, risk register, Statement of Applicability, risk treatment plan, scope, asset inventory, objectives, internal audit, corrective actions, management review, and engagement report.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23C9A84C%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Georgia,serif%22 font-size=%2217%22 font-weight=%22700%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22%3EMW%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -241,6 +241,39 @@
     letter-spacing: -.02em;
   }
   .section-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--muted);
+  }
+  .section-intro {
+    max-width: 760px;
+    margin: -14px 0 30px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink2);
+    opacity: 0;
+    animation: rise .6s .6s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .cards-divider {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 18px 0 2px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    opacity: 0;
+    animation: rise .6s .6s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .cards-divider-label {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -.01em;
+    color: var(--ink);
+  }
+  .cards-divider-note {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     letter-spacing: .04em;
@@ -508,6 +541,12 @@
   .card:nth-child(3) { animation-delay: .71s; }
   .card:nth-child(4) { animation-delay: .79s; }
   .card:nth-child(5) { animation-delay: .87s; }
+  .card:nth-child(7) { animation-delay: .97s; }
+  .card:nth-child(8) { animation-delay: 1.02s; }
+  .card:nth-child(9) { animation-delay: 1.07s; }
+  .card:nth-child(10) { animation-delay: 1.12s; }
+  .card:nth-child(11) { animation-delay: 1.17s; }
+  .card:nth-child(12) { animation-delay: 1.22s; }
 
   @media (max-width: 860px) {
     .cards { grid-template-columns: 1fr; }
@@ -549,6 +588,109 @@
   }
   .theme-opt:hover { color: var(--ink); }
   .theme-opt[aria-pressed="true"] { background: var(--pill-bg); color: var(--pill-text); }
+
+  /* ─────────── ENGAGEMENT JOURNEY ─────────── */
+  .journey { position: relative; margin-top: 6px; }
+  .phase {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    column-gap: 22px;
+  }
+  .phase-rail { display: flex; flex-direction: column; align-items: center; }
+  .phase-node {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Newsreader', Georgia, serif; font-style: italic;
+    font-size: 19px; line-height: 1;
+    color: var(--accent-text);
+    background: linear-gradient(150deg, var(--accent-from) 0%, var(--accent-to) 100%);
+    box-shadow: var(--shadow); flex-shrink: 0;
+  }
+  .phase-line { flex: 1; width: 2px; background: var(--rule); margin: 8px 0 0; min-height: 18px; }
+  .phase:last-child .phase-line { display: none; }
+  .phase-body { min-width: 0; padding-bottom: 38px; }
+  .phase:last-child .phase-body { padding-bottom: 6px; }
+  .phase-eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 7px;
+  }
+  .phase-title {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600;
+    font-size: 23px; letter-spacing: -.02em; color: var(--ink);
+    line-height: 1.1; margin-bottom: 7px;
+  }
+  .phase-desc {
+    font-size: 14.5px; color: var(--ink2); line-height: 1.6;
+    max-width: 62ch; margin-bottom: 16px;
+  }
+  .flags { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); gap: 13px; }
+  .flag {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+    padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 9px;
+    text-decoration: none; color: inherit; box-shadow: var(--shadow);
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, border-color .25s;
+  }
+  .flag:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: var(--gold-soft); }
+  .flag-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .flag-ref {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: .05em; color: var(--gold); text-transform: uppercase;
+  }
+  .flag-badge {
+    font-family: 'IBM Plex Mono', monospace; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+    background: var(--gold-soft); padding: 3px 8px; border-radius: 100px;
+  }
+  .flag-title {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600;
+    font-size: 17px; letter-spacing: -.01em; color: var(--ink); line-height: 1.15;
+  }
+  .flag-what { font-size: 12.5px; color: var(--muted); line-height: 1.6; flex: 1; }
+  .flag-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; margin-top: 4px; padding-top: 11px; border-top: 1px solid var(--rule);
+  }
+  .flag-stat {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+    color: var(--ink2); line-height: 1.35; max-width: 70%;
+  }
+  .flag-stat b { color: var(--gold); font-weight: 500; }
+  .flag-open {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11.5px; font-weight: 600; color: var(--gold); flex-shrink: 0;
+  }
+  .flag-open svg { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+  .flag:hover .flag-open svg { transform: translateX(3px); }
+  .support { margin-top: 16px; }
+  .support-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+  .support-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }
+  .support-link {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    font-size: 12.5px; color: var(--ink2); text-decoration: none;
+    background: var(--surface); border: 1px solid var(--rule);
+    padding: 7px 12px; border-radius: 9px;
+    transition: border-color .2s, color .2s, transform .2s;
+  }
+  .support-link:hover { border-color: var(--gold-soft); color: var(--ink); transform: translateY(-1px); }
+  .support-link .ref {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px;
+    letter-spacing: .03em; color: var(--gold);
+  }
+  .journey-foot {
+    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    color: var(--muted); line-height: 1.6; letter-spacing: .02em;
+  }
+  @media (max-width: 560px) {
+    .phase { grid-template-columns: 38px 1fr; column-gap: 14px; }
+    .phase-node { width: 36px; height: 36px; font-size: 16px; }
+    .phase-title { font-size: 20px; }
+    .flags { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -597,87 +739,157 @@
     </div>
   </header>
 
-  <section class="section">
+  <section class="section" id="engagement">
     <div class="section-head">
-      <h2 class="section-title">The five documents</h2>
-      <span class="section-note">Worked example · Monarch Consolidated Ltd</span>
+      <h2 class="section-title">The engagement, end to end</h2>
+      <span class="section-note">Worked example · Monarch Consolidated Ltd · ISO/IEC 27001:2022</span>
     </div>
 
-    <div class="cards">
+    <p class="section-intro">An ISO 27001 project is a sequence, not a single report. Each phase produces records that feed the next, and together they form the management system an auditor certifies. Below is that journey end to end, worked through one fictional UK fintech. The highlighted documents are the spine of the engagement; every supporting record links through as well.</p>
 
-      <a class="card card--featured" href="MCL-GA-2026-001.html" target="_blank" rel="noopener">
-        <div class="featured-head">
-          <span class="featured-badge">Starting point</span>
-          <span class="card-date">2026-05-18</span>
+    <div class="journey">
+      <div class="phase">
+        <div class="phase-rail"><div class="phase-node">01</div><div class="phase-line"></div></div>
+        <div class="phase-body">
+          <div class="phase-eyebrow">Phase 1 · Cl. 4.1–4.3</div>
+          <h3 class="phase-title">Define the boundary</h3>
+          <p class="phase-desc">Before anything else, agree exactly what the certificate will cover — which systems, people, locations and data — and who and what it must answer to.</p>
+          <div class="flags">
+        <a class="flag" href="MCL-SCOPE-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-SCOPE-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">ISMS Scope Statement</h4>
+          <p class="flag-what">The first document an auditor opens. It draws a precise line around what the certificate covers, and what is deliberately left out and why. Get this wrong and everything after it is measured against the wrong boundary.</p>
+          <div class="flag-foot"><span class="flag-stat"><b>4</b> regulatory regimes mapped · Cl. 4.3</span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+          </div>
+        <div class="support">
+          <span class="support-label">Supporting records</span>
+          <div class="support-links">
+            <a class="support-link" href="MCL-IPC-2026-001.html" target="_blank" rel="noopener">Interested Parties &amp; Context<span class="ref">MCL-IPC-2026-001</span></a>
+            <a class="support-link" href="MCL-LRR-2026-001.html" target="_blank" rel="noopener">Legal &amp; Regulatory Register<span class="ref">MCL-LRR-2026-001</span></a>
+          </div>
         </div>
-        <div class="featured-num">01</div>
-        <div class="featured-body">
-          <span class="card-ref">MCL-GA-2026-001</span>
-          <h3 class="card-title">Gap Analysis Report</h3>
-          <p class="card-desc">Think of this as a health check. It looks at how the company protects its data today and lines that up against what the certificate actually requires. The client finds out exactly where they fall short (here, 29 areas checked and <strong>three serious gaps</strong> found) and gets a clear to-do list, sorted by what matters most. The point is simple: fix the problems quietly now, instead of getting caught out by an inspector later.</p>
-          <span class="card-cta">Open document
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
         </div>
-      </a>
-
-      <a class="card card--std" href="MCL-RR-2026-001.html" target="_blank" rel="noopener">
-        <div class="card-top">
-          <span class="card-ref">MCL-RR-2026-001</span>
-          <span class="card-date">2026-05-25</span>
+      </div>
+      <div class="phase">
+        <div class="phase-rail"><div class="phase-node">02</div><div class="phase-line"></div></div>
+        <div class="phase-body">
+          <div class="phase-eyebrow">Phase 2 · Cl. 4–10 · Annex A</div>
+          <h3 class="phase-title">Find the gaps</h3>
+          <p class="phase-desc">Measure the organisation honestly against the whole standard, so the work ahead is grounded in evidence rather than guesswork.</p>
+          <div class="flags">
+        <a class="flag" href="MCL-GA-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-GA-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">Gap Analysis Report</h4>
+          <p class="flag-what">An evidence-based baseline of the entire ISMS against the standard — every management clause and the Annex A controls — graded conformant, partial or non-conformant, with each finding prioritised and owned.</p>
+          <div class="flag-foot"><span class="flag-stat"><b>47</b> requirements assessed · <b>3</b> P1 blockers</span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+          </div>
         </div>
-        <h3 class="card-title">Risk Register</h3>
-        <p class="card-desc">A list of everything that could go wrong with the company's data, and how bad each one would be. Things like a hacker getting in through a supplier, old software no one updated, or the wrong people having access. Each danger gets a score, a person whose job it is to handle it, and a plan. It turns a vague worry ("could we get hacked?") into something the company can actually act on.</p>
-        <span class="card-cta">Open document
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </a>
-
-      <a class="card card--std" href="MCL-SOA-2026-001.html" target="_blank" rel="noopener">
-        <div class="card-top">
-          <span class="card-ref">MCL-SOA-2026-001</span>
-          <span class="card-date">2026-05-29</span>
+      </div>
+      <div class="phase">
+        <div class="phase-rail"><div class="phase-node">03</div><div class="phase-line"></div></div>
+        <div class="phase-body">
+          <div class="phase-eyebrow">Phase 3 · Cl. 6.1 · Cl. 8</div>
+          <h3 class="phase-title">Assess &amp; treat the risk</h3>
+          <p class="phase-desc">Decide which threats actually matter, how each will be treated, and which controls apply. This is the heart of the management system.</p>
+          <div class="flags">
+        <a class="flag" href="MCL-RR-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-RR-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">Risk Register</h4>
+          <p class="flag-what">The engine of the ISMS. Each threat is scored before and after controls on a 5×5 scale, against a defined acceptance threshold, so leadership can see exactly where residual risk still sits.</p>
+          <div class="flag-foot"><span class="flag-stat"><b>8</b> risks scored inherent → residual</span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+        <a class="flag" href="MCL-RTP-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-RTP-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">Risk Treatment Plan</h4>
+          <p class="flag-what">Turns the risk list into real work: for every risk above appetite, the chosen treatment, the control, an owner, a due date and the target residual. The difference between a report in a drawer and a company that actually gets safer.</p>
+          <div class="flag-foot"><span class="flag-stat"><b>8</b> treatments, owned and dated</span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+        <a class="flag" href="MCL-SOA-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-SOA-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">Statement of Applicability</h4>
+          <p class="flag-what">The signature ISO 27001 document and the first thing a Stage 2 auditor asks for. Every one of the 93 Annex A controls is ruled in or out, with a justification and implementation status for each.</p>
+          <div class="flag-foot"><span class="flag-stat">all <b>93</b> controls · <b>90</b> applicable, <b>3</b> excluded</span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+          </div>
+        <div class="support">
+          <span class="support-label">Supporting records</span>
+          <div class="support-links">
+            <a class="support-link" href="MCL-RAM-2026-001.html" target="_blank" rel="noopener">Risk Assessment Methodology<span class="ref">MCL-RAM-2026-001</span></a>
+            <a class="support-link" href="MCL-RAC-2026-001.html" target="_blank" rel="noopener">Risk Acceptance Record<span class="ref">MCL-RAC-2026-001</span></a>
+          </div>
         </div>
-        <h3 class="card-title">Statement of Applicability</h3>
-        <p class="card-desc">There's an official checklist of 93 security measures a company can use, from locking server rooms to training staff. This document goes through every single one and says whether the company uses it, and if not, why not. When the inspector shows up, this is one of the first things they ask for. Having it ready and honest saves days of awkward questions.</p>
-        <span class="card-cta">Open document
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </a>
-
-      <a class="card card--std" href="MCL-RTP-2026-001.html" target="_blank" rel="noopener">
-        <div class="card-top">
-          <span class="card-ref">MCL-RTP-2026-001</span>
-          <span class="card-date">2026-06-01</span>
         </div>
-        <h3 class="card-title">Risk Treatment Plan</h3>
-        <p class="card-desc">Knowing the risks is one thing. Actually fixing them is another. This takes each danger from the risk list and turns it into a real job: what needs doing, who's doing it, by when, and how you'll know it's done. It's the difference between a nice report that sits in a drawer and one that actually gets the company safer.</p>
-        <span class="card-cta">Open document
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </a>
-
-      <a class="card card--std" href="MCL-ISMS-RPT-2026-001.html" target="_blank" rel="noopener">
-        <div class="card-top">
-          <span class="card-ref">MCL-ISMS-RPT-2026-001</span>
-          <span class="card-date">2026-06-06</span>
+      </div>
+      <div class="phase">
+        <div class="phase-rail"><div class="phase-node">04</div><div class="phase-line"></div></div>
+        <div class="phase-body">
+          <div class="phase-eyebrow">Phase 4 · Cl. 5–8 · Annex A</div>
+          <h3 class="phase-title">Build the management system</h3>
+          <p class="phase-desc">Turn the decisions into the policies, registers and routines that make security a working system rather than a one-off assessment.</p>
+          <div class="flags">
+        <a class="flag" href="MCL-POL-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-POL-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">Information Security Policy Suite</h4>
+          <p class="flag-what">The rules the organisation commits to, written to be read and approved rather than shelved. A coherent suite covering access, cryptography, suppliers, incident response and continuity — each mapped to the controls it satisfies.</p>
+          <div class="flag-foot"><span class="flag-stat"><b>10</b> policies, control-mapped</span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+          </div>
+        <div class="support">
+          <span class="support-label">Supporting records</span>
+          <div class="support-links">
+            <a class="support-link" href="MCL-OBJ-2026-001.html" target="_blank" rel="noopener">Information Security Objectives<span class="ref">MCL-OBJ-2026-001</span></a>
+            <a class="support-link" href="MCL-AST-2026-001.html" target="_blank" rel="noopener">Asset Inventory<span class="ref">MCL-AST-2026-001</span></a>
+            <a class="support-link" href="MCL-SUP-2026-001.html" target="_blank" rel="noopener">Supplier Register<span class="ref">MCL-SUP-2026-001</span></a>
+            <a class="support-link" href="MCL-BIA-2026-001.html" target="_blank" rel="noopener">Business Impact Analysis<span class="ref">MCL-BIA-2026-001</span></a>
+            <a class="support-link" href="MCL-BCP-2026-001.html" target="_blank" rel="noopener">Business Continuity Plan<span class="ref">MCL-BCP-2026-001</span></a>
+            <a class="support-link" href="MCL-ARL-2026-001.html" target="_blank" rel="noopener">Access Review Log<span class="ref">MCL-ARL-2026-001</span></a>
+            <a class="support-link" href="MCL-VPT-2026-001.html" target="_blank" rel="noopener">Vulnerability &amp; Patch Tracker<span class="ref">MCL-VPT-2026-001</span></a>
+            <a class="support-link" href="MCL-INC-2026-001.html" target="_blank" rel="noopener">Incident Register<span class="ref">MCL-INC-2026-001</span></a>
+            <a class="support-link" href="MCL-MM-2026-001.html" target="_blank" rel="noopener">Monitoring &amp; Measurement<span class="ref">MCL-MM-2026-001</span></a>
+            <a class="support-link" href="MCL-CHG-2026-001.html" target="_blank" rel="noopener">Change Management Log<span class="ref">MCL-CHG-2026-001</span></a>
+            <a class="support-link" href="MCL-CAL-2026-001.html" target="_blank" rel="noopener">ISMS Programme Calendar<span class="ref">MCL-CAL-2026-001</span></a>
+            <a class="support-link" href="MCL-DCR-2026-001.html" target="_blank" rel="noopener">Document Control Register<span class="ref">MCL-DCR-2026-001</span></a>
+            <a class="support-link" href="MCL-CMP-2026-001.html" target="_blank" rel="noopener">Competence &amp; Awareness Records<span class="ref">MCL-CMP-2026-001</span></a>
+            <a class="support-link" href="MCL-CGA-2026-001.html" target="_blank" rel="noopener">Competence Gap Analysis<span class="ref">MCL-CGA-2026-001</span></a>
+          </div>
         </div>
-        <h3 class="card-title">Engagement Report</h3>
-        <p class="card-desc">The summary that goes to the people running the company, the ones who pay for all this. No tech speak. It says plainly: here's what we looked at, here's what we found, here's the risk you're carrying, and here's whether you're ready to pass. Written so a busy boss can read it in five minutes and know exactly where things stand.</p>
-        <span class="card-cta">Open document
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </a>
-
-
-
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-rail"><div class="phase-node">05</div><div class="phase-line"></div></div>
+        <div class="phase-body">
+          <div class="phase-eyebrow">Phase 5 · Cl. 9–10</div>
+          <h3 class="phase-title">Prove it, and get certify-ready</h3>
+          <p class="phase-desc">Check your own work before the auditor does, fix what surfaces, and put a clear readiness verdict in front of leadership.</p>
+          <div class="flags">
+        <a class="flag" href="MCL-CER-2026-001.html" target="_blank" rel="noopener">
+          <div class="flag-top"><span class="flag-ref">MCL-CER-2026-001</span><span class="flag-badge">Flagship</span></div>
+          <h4 class="flag-title">Engagement Report</h4>
+          <p class="flag-what">The readout for the people who pay for the work. No tech-speak: what was examined, what was found, the risk the business is carrying, and a dated path to certification a busy board can absorb in five minutes.</p>
+          <div class="flag-foot"><span class="flag-stat">Board-level verdict: <b>Stage 2-ready, Q4 2026</b></span><span class="flag-open">Open <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </a>
+          </div>
+        <div class="support">
+          <span class="support-label">Supporting records</span>
+          <div class="support-links">
+            <a class="support-link" href="MCL-IA-2026-001.html" target="_blank" rel="noopener">Internal Audit Report<span class="ref">MCL-IA-2026-001</span></a>
+            <a class="support-link" href="MCL-CAR-2026-001.html" target="_blank" rel="noopener">Nonconformity &amp; Corrective Action Register<span class="ref">MCL-CAR-2026-001</span></a>
+            <a class="support-link" href="MCL-MR-2026-001.html" target="_blank" rel="noopener">Management Review Minutes<span class="ref">MCL-MR-2026-001</span></a>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
+
+    <p class="journey-foot">All 28 documents are drawn from the same fictional engagement and open in a new tab. Company, figures and findings are illustrative and contain no confidential information.</p>
   </section>
 
   <section class="about">
     <div>
-      <p class="about-body"><strong class="about-lead">Most companies don't chase ISO 27001 for fun.</strong> Usually a big client demanded it, a regulator flagged a problem, or something went wrong and the question could no longer be ignored. The work itself is manageable once you know the standard, but there's a lot of it. Monarch Consolidated Ltd is a made-up UK fintech I built to show what the core documentation looks like across all five deliverables.</p>
-      <p class="about-body">The five documents build on each other. The health check sets the baseline. The risk list ranks the dangers. The applicability statement records which security measures are in use. The action plan assigns the fixes. The final report ties it all together for the people in charge. Each one is built to stand on its own and survive a close look from an outside inspector.</p>
+      <p class="about-body"><strong class="about-lead">Most companies don't chase ISO 27001 for fun.</strong> Usually a big client demanded it, a regulator flagged a problem, or something went wrong and the question could no longer be ignored. The work itself is manageable once you know the standard, but there's a lot of it. Monarch Consolidated Ltd is a made-up UK fintech I built to show what a real engagement produces, from the opening health check through to the records that keep the system running.</p>
+      <p class="about-body">The documents build on each other. The scope draws the boundary. The health check sets the baseline. The risk list ranks the dangers and the action plan assigns the fixes. The applicability statement records which controls are in use. Then the supporting records, the asset list, the objectives, the internal audit, the corrective actions, the management review, turn a one-off assessment into a management system an auditor can certify. Each one is built to stand on its own and survive a close look from an outside inspector.</p>
     </div>
   </section>
 
